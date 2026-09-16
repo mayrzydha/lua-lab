@@ -3,8 +3,10 @@ Exercise 1.1: Run the factorial example. What happens to your program if you ent
 Modify the example to avoid this problem.
 ]] --
 
-function fact(n)
-    if n == 0 then
+local function fact(n)
+    if n < 0 then
+        return nil
+    elseif n == 0 then
         return 1
     else
         return n * fact(n - 1)
@@ -12,5 +14,10 @@ function fact(n)
 end
 
 print("enter a number:")
-a = io.read("*n")
-print(fact(a))
+local a = io.read("*n")
+
+if a < 0 then
+    print("factorial is not defined for negative numbers")
+else
+    print(fact(a))
+end
